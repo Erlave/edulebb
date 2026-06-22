@@ -1,0 +1,31 @@
+# Python
+pycache/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Django
+db.sqlite3
+yoozify-db.sqlite3
+
+media/
+staticfiles/
+static/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,29 @@
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Eduleb - Education HTML Template">
+    <meta name="keywords"
+        content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">
+    <title>{% block page_title %}Eduleb - آموزش قالب HTML  {% endblock page_title %}</title>
+    
+</head>
+
+{% include 'header_reference.html' %}
+{% render_partial 'home.views.header_component' %}
+
+<body data-spy="scroll" data-offset="80">
+
+    {% block content %}{% endblock content %}
+
+    {% include 'footer_reference.html' %}
+    {% render_partial 'home.views.footer_component' %}
+</body>
+
+</html>

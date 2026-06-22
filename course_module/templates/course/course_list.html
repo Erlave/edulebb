@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load poll_extras %}
+    
+{% block content %}
+        <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>همه دوره</h1>
+                    <ul>
+                        <li><a href="{% url "home" %}">صفحه اصلی</a></li>
+                        <li>/ دروس</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home_course section-padding">
+        <div class="container">
+            <div class="row">
+                {% for course in courses %}
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="single_course">
+                        <div class="single_c_img">
+                            <img src="{{course.image.url}}" class="img-fluid" alt="course-image"><span>{{course.category}}</span>
+                        </div>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                            class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <h4><a href="{{course.get_absolute_url}}">{{course.title}}</a></h4>
+                        {% comment %} <p><span class="ti-book"></span>12 دوره</p> {% endcomment %}
+                        <p><span class="ti-alarm-clock"></span> روز {{course.duration }}</p>
+                        <div class="price">هزینه دوره - {{course.price|three_digits_currency}} تومان</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock content %}
