@@ -61,22 +61,8 @@
                             </div>
                             <div class="tab-pane fade" role="tabpanel" id="curriculum">
                                 <div class="overview">
-                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و در ستون و سطرآنان است که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای بسیاری در شصت و سه درصد گذشته، حال و آینده شناخت جامعه
-                                        و متخصصان را می طلبد تا با نرم افزارها بیشتر را برای طراحان رایانه ای علی الخصوص
-                                        طراحان خلاق و فرهنگ پیشرو در زبان بشناسد.</p>
-                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و در ستون و سطرآنان است که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای بسیاری در شصت و سه درصد گذشته، حال و آینده شناخت جامعه
-                                        و متخصصان را می طلبد تا با نرم افزارها بیشتر را برای طراحان رایانه ای علی الخصوص
-                                        طراحان خلاق و فرهنگ پیشرو در زبان بشناسد.</p>
-                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و در ستون و سطرآنان است که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت</p>
+                                    <p>{{course.Study_program}}</p>
+                                    
                                     <div class="details-buttons-area">
                                         <a href="#0" class="custom-button theme-one">اکنون ثبت نام کنید<i
                                                 class="fa fa-angle-right"></i></a><a href="#0"
@@ -92,22 +78,19 @@
                             <div class="tab-pane fade" id="instructor">
                                 <div class="overview text-center">
                                     <div class="instructor-item">
-                                        <div class="instructor-thumb"><a href="#0"><img src="assets/img/ins-details.png"
+                                        <div class="instructor-thumb"><a href="#0"><img src="{{course.instructor.image.url}}"
                                                     alt="instructor"></a></div>
                                         <div class="instructor-content">
-                                            <h6 class="title"><a href="#0">مانوئل نویر</a></h6>
-                                            <span class="details">معلم</span>
+                                            <h6 class="title"><a href="#0">{{course.instructor.full_name}} </a></h6>
+                                            <span class="details">{{course.instructor.position}}</span>
                                         </div>
                                     </div>
-                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و در ستون و سطرآنان است که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای زیادی در شصت و س</p>
+                                    <p>{{course.instructor.bio}}</p>
                                     <div class="details-buttons-area">
                                         <ul class="social-icons justify-content-center w-100">
-                                            <li><a href="#0"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#0" class="active"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#0"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href={{course.instructor.facebook}}><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href={{course.instructor.twitter}} class="active"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href={{course.instructor.instagram}}><i class="fa fa-instagram"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -115,86 +98,72 @@
                             <div class="tab-pane fade" id="reviews">
                                 <div class="client-review">
                                     <div class="review-comments">
-                                        <h6 class="review-title">نظرات (03)</h6>
+                                        <h6 class="review-title">نظرات ({{ course.reviews.count }})</h6>
                                         <ul class="review-contents">
-                                            <li>
-                                                <div class="thumb"><img src="assets/img/client04.png" alt="course">
-                                                </div>
-                                                <div class="cont">
-                                                    <h6 class="subtitle">ربات اسمیت</h6>
-                                                    <div class="ratings cl-theme">
-                                                        <span><i class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span>
+                                            {% for review in course.reviews.all %}
+                                                <li>
+                                                    {% comment %} <div class="thumb"><img src="assets/img/client04.png" alt="course">
+                                                    </div> {% endcomment %}
+                                                    <div class="cont">
+                                                        <h6 class="subtitle"> {{ review.name }} </h6>
+                                                        <div class="ratings">
+
+                                                            {% for i in "12345" %}
+
+                                                                {% if forloop.counter <= review.rate %}
+                                                                    <span style="color: gold">
+                                                                        ★
+                                                                    </span>
+                                                                {% else %}
+                                                                    <span style="color: gray">
+                                                                        ★
+                                                                    </span>
+                                                                {% endif %}
+
+                                                            {% endfor %}
+
+                                                           
+
+                                                        </div>
+                                                        <p>{{ review.comment }}</p>
                                                     </div>
-                                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده
-                                                        از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb"><img src="assets/img/client02.png" alt="course">
-                                                </div>
-                                                <div class="cont">
-                                                    <h6 class="subtitle">نیکلاس آنلکا</h6>
-                                                    <div class="ratings cl-theme">
-                                                        <span><i class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span
-                                                            class="cl-theme-light"><i class="fa fa-star"></i></span>
-                                                    </div>
-                                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده
-                                                        از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="thumb"><img src="assets/img/client03.png" alt="course">
-                                                </div>
-                                                <div class="cont">
-                                                    <h6 class="subtitle">هری جانشون</h6>
-                                                    <div class="ratings cl-theme">
-                                                        <span><i class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span><span><i
-                                                                class="fa fa-star"></i></span>
-                                                    </div>
-                                                    <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده
-                                                        از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و</p>
-                                                </div>
-                                            </li>
+                                                </li>
+                                                {% empty %}
+                                                <li>
+                                                    هنوز نظری ثبت نشده است.
+                                                </li>
+                                            {% endfor %}
+
                                         </ul>
                                     </div>
                                     <div class="review-form">
                                         <h6 class="review-title">یک بررسی اضافه کنید</h6>
-                                        <form class="row client-form align-items-center">
-                                            <div class="col-md-4 col-12"><input type="text" name="name"
-                                                    placeholder="نام و نام خانوادگی"></div>
-                                            <div class="col-md-4 col-12"><input type="text" name="email"
-                                                    placeholder="آدرس پست الکترونیکی"></div>
-                                            <div class="col-md-4 col-12">
-                                                <div class="rating">
-                                                    <span class="rating-title">امتیاز شما :</span>
-                                                    <ul class="ratings">
-                                                        <li><a href="#0" title="Give Me One Star"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li><a href="#0" title="Give Me Two Star"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li><a href="#0" title="Give Me Three Star"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li><a href="#0" title="Give Me Four Star"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li><a href="#0" title="Give Me Five Star"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
+                                        <form method="post" class="row client-form align-items-center">
+
+                                            {% csrf_token %}
+
+                                            <div class="col-md-4">
+                                                {{ form.name }}
                                             </div>
-                                            <div class="col-md-12 col-12 d-inline-flex"><textarea rows="5"
-                                                    placeholder="اینجا پیام را تایپ کنید"></textarea></div>
-                                            <div class="col-12"><button type="submit"
-                                                    class="custom-button rounded">ارسال بررسی</button></div>
+
+                                            <div class="col-md-4">
+                                                {{ form.email }}
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                {{ form.rate }}
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                {{ form.comment }}
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button type="submit" class="custom-button rounded">
+                                                    ارسال نظر
+                                                </button>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -226,27 +195,16 @@
                     <div class="event_info_register"><a class="btn_one" href="#">امروز ثبت نام کنید</a></div>
                     <div class="related_course">
                         <h3>دوره مرتبط</h3>
+                        {% for product in related_courses %}
                         <div class="single_rc">
-                            <div class="rc_img"><img src="assets/img/rc-1.png" alt=""></div>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i>
-                            <h4><a href="#">طراحی UI/UX و ...</a></h4>
-                            <span>$42.00</span>
+                            {% comment %} <div class="rc_img"><img src={{product.image.url}} alt=""></div> {% endcomment %}
+                            {% comment %} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i> {% endcomment %}
+                            <h4><a href="#"> {{ product.title }}</a></h4>
+                            <span>${{product.price|three_digits_currency}}</span>
                         </div>
-                        <div class="single_rc">
-                            <div class="rc_img"><img src="assets/img/rc-2.png" alt=""></div>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i>
-                            <h4><a href="#">بزرگترین علاقه در ...</a></h4>
-                            <span>$37.00</span>
-                        </div>
-                        <div class="single_rc">
-                            <div class="rc_img"><img src="assets/img/rc-3.png" alt=""></div>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i>
-                            <h4><a href="#">هنر خود را به کار ببرید...</a></h4>
-                            <span>$21.00</span>
-                        </div>
+                        {% endfor %}
+                        
                     </div>
                     <div class="sidebar-post">
                         <div class="sidebar_title">
@@ -254,14 +212,12 @@
                         </div>
                         <div class="single_category">
                             <ul>
-                                <li><a href="#">تحصیلات<sup>11</sup></a></li>
-                                <li><a href="#">محتوای هوش مصنوعی<sup>44</sup></a></li>
-                                <li><a href="#">دوره جدید<sup>33</sup></a></li>
-                                <li><a href="#">بازار یابی<sup>14</sup></a></li>
-                                <li><a href="#">نرم افزار<sup>21</sup></a></li>
-                                <li><a href="#">طرح<sup>01</sup></a></li>
+                                {% for category in categories %}
+                                <li><a href="#">{{ category.title }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
+
                     </div>
                     <div class="sidebar-post">
                         <div class="sidebar_title">

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Course
-
-
+from .models import Course ,Review,Category
+from .forms import ReviewForm
+from django.shortcuts import redirect
 
 class CourseListView(ListView):
     model = Course
@@ -31,11 +31,14 @@ class CourseDetailView(DetailView):
             Course.objects
             .filter(is_active=True)
             .select_related("category", "instructor")
-            # .prefetch_related("reviews")
+            .prefetch_related("reviews")
         )
 
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        context["form"] = ReviewForm()
 
         context["related_courses"] = (
             Course.objects
@@ -46,4 +49,40 @@ class CourseDetailView(DetailView):
             .exclude(id=self.object.id)[:3]
         )
 
+        context["reviews"] = Review.objects.filter(is_active=True)
+
+        # ✔️ ALL categories + 3 PRODUCTS per category
+        categories = Category.objects.all()
+
+        for category in categories:
+            category.limited_products = (
+                Course.objects
+                .filter(
+                    category=category,
+                    is_active=True
+                )
+                [:3]
+            )
+        # related_products = Course.objects.filter(category=Course.category).exclude(id=Course.id)[:6]
+        # context["related_products"] = related_products
+        context["categories"] = categories
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.course = self.object
+            review.save()
+
+            return redirect(
+                "course-details",
+                slug=self.object.slug
+            )
+
+        context = self.get_context_data()
+        context["form"] = form
+        return self.render_to_response(context)

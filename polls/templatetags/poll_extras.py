@@ -4,6 +4,7 @@ from jalali_date import date2jalali
 register = template.Library()
 
 
+
 @register.filter(name='cut')
 def cut(value, arg):
     return value.replace(arg, '')
@@ -22,3 +23,16 @@ def three_digits_currency(value:int):
 @register.simple_tag
 def multipy(quantity, price, *args,**kwargs):
     return three_digits_currency(quantity * price)
+
+
+
+
+
+@register.filter
+def times(number):
+    return range(number)
+
+
+@register.filter
+def subtract(value, arg):
+    return value - arg

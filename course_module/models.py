@@ -61,6 +61,7 @@ class Course(models.Model):
     image = models.ImageField(upload_to="courses/")
     short_description = models.CharField(max_length=300)
     description = models.TextField()
+    Study_program = models.TextField(blank=True,null=True)
 
     price = models.PositiveIntegerField(default=0)
 
@@ -94,26 +95,27 @@ class Course(models.Model):
         return self.title
 
 
-# class Review(models.Model):
-#     course = models.ForeignKey(
-#         Course,
-#         on_delete=models.CASCADE,
-#         related_name="reviews"
-#     )
+class Review(models.Model):
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="reviews"
+    )
 
-#     name = models.CharField(max_length=120)
-#     email = models.EmailField()
+    name = models.CharField(max_length=120)
+    email = models.EmailField()
 
-#     rate = models.PositiveSmallIntegerField(default=5)
+    rate = models.PositiveSmallIntegerField(default=5)
 
-#     comment = models.TextField()
+    comment = models.TextField()
+    is_active = models.BooleanField(default=False)
 
-#     created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-#     class Meta:
-#         ordering = ["-created_at"]
-#         verbose_name = "نظر"
-#         verbose_name_plural = "نظرات"
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "نظر"
+        verbose_name_plural = "نظرات"
 
-#     def __str__(self):
-#         return f"{self.name} - {self.course.title}"
+    def __str__(self):
+        return f"{self.name} - {self.course.title}"
