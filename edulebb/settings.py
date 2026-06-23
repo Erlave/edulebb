@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'django_render_partial',
     'course_module',
     'polls',
+    'account_module',
+
 ]
+
+
+AUTH_USER_MODEL = "account_module.CustomUser"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -17,7 +17,7 @@
                                     {% comment %} <li><a href="index2.html">صفحه اصلی 02</a></li> {% endcomment %}
                                 </ul>
                             </li>
-                            <li><a href="about.html">در باره</a></li>
+                            <li><a href="about.html">درباره</a></li>
                             <li class="menu-item-has-children">
                                 <a href="course.html">دوره</a>
                                 <ul>
@@ -47,7 +47,7 @@
                     </nav>
                 </div>
                 <div class="col-20 d-none d-xl-block text-end align-self-center">
-                    <a href="#" class="header-btn">ورود</a><a href="contact.html" class="btn_one">ثبت نام</a>
+                   {% if  user.is_authenticated %} <a href="{% url "logout" %}" class="btn_one" style="background-color: red;"> خروج</a> {% else %} <a href="{% url "login_url" %}" class="header-btn">ورود</a><a href="{% url "login_url" %}" class="btn_one">ثبت نام</a>{% endif %}
                 </div>
                 <ul class="mobile_menu">
                     <li>
@@ -57,7 +57,7 @@
                             <li><a href="index2.html">صفحه اصلی 02</a></li>
                         </ul>
                     </li>
-                    <li><a href="about.html">در باره</a></li>
+                    <li><a href="about.html">درباره</a></li>
                     <li>
                         <a href="#">دوره</a>
                         <ul class="sub-menu">
