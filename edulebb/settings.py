@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'course_module',
     'polls',
     'account_module',
+    'contact_us',
+
 
 ]
 
