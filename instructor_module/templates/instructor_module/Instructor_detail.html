@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>مشخصات مربی</h1>
+                    <ul>
+                        <li><a href="{% url "home" %}">صفحه اصلی</a></li>
+                        <li>/ جزئیات مربی</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="template_agent section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="single_agent">
+                        <div class="single_agent_image"><img src="{{Instructor.image.url}}" class="img-fluid" alt="">
+                        </div>
+                        <div class="single_agent_content">
+                            <h4>  {{Instructor.full_name}} </h4>
+                            <h5> {{Instructor.position}} </h5>
+                            <p> {{Instructor.bio}}</p>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>{{Instructor.email}}
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>{{Instructor.phone}}
+                                </li>
+                                <li>
+                                    <i class="fa fa-plane"></i>{{Instructor.website}}
+                                </li>
+                                <li>
+                                    <i class="fa fa-skype"></i>{{Instructor.skype}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="agent_social">
+                            <ul class="list-inline">
+                                <li><a href="#" class="top_f_facebook"><img src="assets/img/fb.svg" alt=""></a></li>
+                                <li><a href="#" class="top_f_facebook"><img src="assets/img/tw.svg" alt=""></a></li>
+                                <li><a href="#" class="top_f_facebook"><img src="assets/img/pn.svg" alt=""></a></li>
+                                <li><a href="#" class="top_f_facebook"><img src="assets/img/ins.svg" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock content %}

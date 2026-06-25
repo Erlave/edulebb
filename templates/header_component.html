@@ -13,7 +13,7 @@
                             <li class="menu-item-has-children">
                                 <a href="#">صفحه اصلی</a>
                                 <ul>
-                                    <li><a href="index.html">صفحه اصلی 01</a></li>
+                                    <li><a href="{% url "home" %}">صفحه اصلی 01</a></li>
                                     {% comment %} <li><a href="index2.html">صفحه اصلی 02</a></li> {% endcomment %}
                                 </ul>
                             </li>
@@ -28,8 +28,8 @@
                             <li class="menu-item-has-children">
                                 <a href="#">صفحات</a>
                                 <ul>
-                                    <li><a href="instructor.html">مربی</a></li>
-                                    <li><a href="ins_details.html">مشخصات مربی</a></li>
+                                    <li><a href="{% url "Instructor_list" %}">مربی</a></li>
+                                    {% comment %} <li><a href="ins_details.html">مشخصات مربی</a></li> {% endcomment %}
                                     <li><a href="pricing.html">طرح قیمت گذاری</a></li>
                                     <li><a href="faq.html">صفحه فک</a></li>
                                     <li><a href="404.html">404</a></li>
@@ -53,23 +53,23 @@
                     <li>
                         <a href="#">صفحه اصلی</a>
                         <ul class="sub-menu">
-                            <li><a href="index.html">صفحه اصلی 01</a></li>
-                            <li><a href="index2.html">صفحه اصلی 02</a></li>
+                            <li><a href="{% url "home" %}">صفحه اصلی 01</a></li>
+                            {% comment %} <li><a href="index2.html">صفحه اصلی 02</a></li> {% endcomment %}
                         </ul>
                     </li>
-                    <li><a href="about.html">درباره</a></li>
+                    <li><a href="{% url "course_list" %}">درباره</a></li>
                     <li>
                         <a href="#">دوره</a>
                         <ul class="sub-menu">
                             <li><a href="course.html">دوره</a></li>
-                            <li><a href="course_details.html">جزئیات دوره</a></li>
+                            {% comment %} <li><a href="course_details.html">جزئیات دوره</a></li> {% endcomment %}
                         </ul>
                     </li>
                     <li>
                         <a href="#">صفحات</a>
                         <ul class="sub-menu">
-                            <li><a href="instructor.html">مربی</a></li>
-                            <li><a href="ins_details.html">مشخصات مربی</a></li>
+                            <li><a href="{% url "Instructor_list" %}">مربی</a></li>
+                            {% comment %} <li><a href="ins_details.html">مشخصات مربی</a></li> {% endcomment %}
                             <li><a href="pricing.html">طرح قیمت گذاری</a></li>
                             <li><a href="faq.html">صفحه فک</a></li>
                             <li><a href="404.html">404</a></li>

@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from instructor_module.models import Instructor
 # Create your models here.
 from django.db import models
 from django.utils.text import slugify
@@ -22,23 +22,6 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-
-class Instructor(models.Model):
-    full_name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to="instructors/")
-    position = models.CharField(max_length=100, blank=True)
-    bio = models.TextField()
-
-    facebook = models.URLField(blank=True)
-    twitter = models.URLField(blank=True)
-    instagram = models.URLField(blank=True)
-
-    class Meta:
-        verbose_name = "مدرس"
-        verbose_name_plural = "مدرسان"
-
-    def __str__(self):
-        return self.full_name
 
 
 class Course(models.Model):

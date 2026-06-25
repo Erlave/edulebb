@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'polls',
     'account_module',
     'contact_us',
+    'instructor_module',
+
 
 
 ]

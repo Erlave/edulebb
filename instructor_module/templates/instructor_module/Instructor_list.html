@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+    
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>مربی ما</h1>
+                    <ul>
+                        <li><a href="{% url "home" %}">صفحه اصلی</a></li>
+                        <li>/ مربی ها</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team_area section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>با مربیان ما آشنا شوید</h2>
+                <p>ما یک رویکرد کاملاً جدید برای اساسی ترین پارادایم های یادگیری ارائه می دهیم. از میان طیف گسترده ای از
+                    گزینه های یادگیری انتخاب کنید و مهارت های جدیدی به دست آورید! مدرسه ما معلوم است</p>
+            </div>
+            <div class="row">
+                {% for  Instructor in Instructor  %}
+                <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"
+                    data-wow-offset="0">
+                    <div class="our-team">
+                        <div class="team-content">
+                            <a href="{% url 'Instructor_detail' Instructor.slug %}"><img src="{{Instructor.image.url}}" alt=""></a>
+                            <ul class="social-links">
+                                <li><a href="#" class="ti-twitter"></a></li>
+                                <li><a href="#" class="ti-linkedin"></a></li>
+                                <li><a href="#" class="ti-facebook"></a></li>
+                            </ul>
+                        </div>
+                        <div class="team-prof">
+                            <h3> {{Instructor.full_name}}</h3>
+                            <span>{{Instructor.position}} </span>
+                        </div>
+                        <div class="sth_det2">
+                            <span class="ti-file"><u>{{Instructor.courses.all.count }} دوره</u></span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock content %}
