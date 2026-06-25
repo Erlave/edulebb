@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+{% load poll_extras %}
+
+
+
+{% block content %}
+
+
+    
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>درباره</h1>
+                    <ul>
+                        <li><a href="{% url "home" %}">صفحه اصلی</a></li>
+                        <li>/ درباره ما</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="top_cat__area section-padding"
+        style="background-image: url(assets/img/bg/shape-1.png); background-size:cover; background-position: center center;">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>    {{about.title}}  </h2>
+                <p>{{about.description_1}} </p>
+            </div>
+            <div class="row">
+                {% for  feature in about.features.all %}
+                <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"
+                    data-wow-offset="0">
+                    <div class="single_tp">
+                        <span class="sc_one">{{feature.order}}</span>
+                        <h3>{{ feature.title }}</h3>
+                        <p>{{ feature.short_description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="ab_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"
+                    data-wow-offset="0">
+                    <div class="ab_img"><img src="{{about.image.url}}" class="img-fluid" alt="image"></div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"
+                    data-wow-offset="0">
+                    <div class="ab_content">
+                        <h2>{{about.title}}</h2>
+                        <p>{{about.description_1}}</p>
+                        <p>{{about.description_2}}</p>
+                        <ul>
+                            {% for   benefit in about.benefits.all  %}
+                            <li>
+                                <span class="ti-check"></span>{{benefit.title}}  
+                            </li>
+                            {% endfor %}
+                            
+                        </ul>
+                        <a class="btn_one" href="">{{about.button_text}}<i class="ti-arrow-top-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vid_area va2"
+        style="background-image: url(assets/img/bg/video.jpg); background-size:cover; background-position: center center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 vp_top wow fadeInUDown" data-wow-duration="1s" data-wow-delay="0.2s"
+                    data-wow-offset="0">
+                    <div class="video-area2"><a href="{{about.video_url}}"
+                            class="magnific_popup video-button"><i class="fa fa-play"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="count_area counter_feature">
+        <div class="container">
+            <div class="row">
+                {% for  counter in counters  %}
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="single-counter">
+                        <span class="{{ counter.icon_class }}"></span>
+                        <h2 class="counter-num">{{ counter.value }}</h2>
+                        <p> {{ counter.title }} </p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="insfreecourse section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"
+                    data-wow-offset="0">
+                    {% for  banner in banners  %}
+                    <div class="single_ins"
+                        style="background-image: url({{banner.image.url}}); background-size:cover; background-position: center center;">
+                        <div class="single_ins_content">
+                            <h4>  {{ banner.subtitle }} </h4>
+                            <h1>{{ banner.title }} </h1>
+                            <p>{{ banner.description }}</p>
+                            <a class="btn_one" href="{{banner.button_url}} ">{{banner.button_text}}  <i class="ti-arrow-top-left"></i></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="testi_area section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>آنچه دانش آموزان می گویند برای انجام<br>دوره آنلاین آنها</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div id="testimonial-slider2" class="owl-carousel">
+
+                        {% for  testimonial in testimonials  %}
+                        <div class="testimonial">
+                            <img src="{% static "img/quote.png" %}" alt="">
+                            <div class="testimonial_content">
+                                {% for rate in testimonial.rate|times %}
+                                <i class="ti-star"></i>
+                                {% endfor %}
+                                <p>    {{testimonial.text}} </p>
+                            </div>
+                            <div class="testi_pic_title">
+                                <img src="{{testimonial.image.url}}" alt="">
+                                <h4> {{testimonial.full_name}}</h4>
+                                <p>{{testimonial.company}} </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock content %}

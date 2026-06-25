@@ -26,6 +26,8 @@ urlpatterns = [
     path('auth/' ,include('account_module.url') ),
     path('contact_us/' ,include('contact_us.url') ),
     path('Instructor/' ,include('instructor_module.url') ),
+    path('about/' ,include('about_us.url') ),
+
 
 
 ]

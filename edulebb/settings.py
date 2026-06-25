@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'account_module',
     'contact_us',
     'instructor_module',
+    'about_us',
+
 
 
 

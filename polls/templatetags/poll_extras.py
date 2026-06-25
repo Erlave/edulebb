@@ -25,12 +25,12 @@ def multipy(quantity, price, *args,**kwargs):
     return three_digits_currency(quantity * price)
 
 
-
-
-
 @register.filter
 def times(number):
     return range(number)
+
+
+
 
 
 @register.filter
