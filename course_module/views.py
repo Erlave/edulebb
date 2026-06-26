@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView
 from .models import Course ,Review,Category
 from .forms import ReviewForm
 from django.shortcuts import redirect
+from django.db.models import Q
+
 
 class CourseListView(ListView):
     model = Course
@@ -11,12 +13,27 @@ class CourseListView(ListView):
     
 
     def get_queryset(self):
-        return (
+        queryset = (
             Course.objects
             .filter(is_active=True)
             .select_related("category", "instructor")
             .order_by("-created_at")
         )
+
+        search = self.request.GET.get("search")
+
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search) |
+                Q(short_description__icontains=search)
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search"] = self.request.GET.get("search", "")
+        return context
 
 
 class CourseDetailView(DetailView):

@@ -26,14 +26,16 @@
                         <div class="single_c_img">
                             <img src="{{course.image.url}}" class="img-fluid" alt="course-image"><span>{{course.category}}</span>
                         </div>
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i>
+                        
                         <h4><a href="{{course.get_absolute_url}}">{{course.title}}</a></h4>
                         {% comment %} <p><span class="ti-book"></span>12 دوره</p> {% endcomment %}
                         <p><span class="ti-alarm-clock"></span> روز {{course.duration }}</p>
                         <div class="price">هزینه دوره - {{course.price|three_digits_currency}} تومان</div>
                     </div>
                 </div>
+                {% empty %}
+
+                            <p>محصولی وجود ندارد</p>
                 {% endfor %}
 
             </div>

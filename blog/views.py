@@ -15,7 +15,7 @@ class BlogListView(ListView):
 
     context_object_name = "blogs"
 
-    paginate_by = 6
+    
 
     queryset = Blog.objects.filter(
         is_active=True
