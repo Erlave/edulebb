@@ -6,16 +6,15 @@
 
 
     <section class="home_bg hb_height"
-        style="background-image: url(assets/img/bg/home-bg.jpg); background-size:cover; background-position: center center;">
+        style="background-image: url({{ site_setting.hero_image.url }}); background-size:cover; background-position: center center;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                     <div class="hero-text ht_top">
                         <h1>
-                            <span>مطالعه هوشمند</span>جایی که دانش با وب ملاقات می کند
+                            {{ site_setting.hero_title }}
                         </h1>
-                        <p>لورم ایوم متن ساختگی با تولید آسان نامفهوم از صنعت چاپ با استفاده از طراحان گرافیک است.
-                            چاپگرها و</p>
+                        <p>{{ site_setting.hero_description }}</p>
                     </div>
                     <div class="home_sb">
 

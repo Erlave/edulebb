@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'instructor_module',
     'about_us',
     'blog',
+    'site_setting',
+
 
 
 
@@ -81,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'site_setting.context_processors.site_setting',
             ],
         },
     },
