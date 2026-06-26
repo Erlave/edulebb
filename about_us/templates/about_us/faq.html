@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load poll_extras %}
+
+
+
+{% block content %}
+
+
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>فک</h1>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li>/ پرسش و پاسخ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq_area section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-sm-12 col-xs-12">
+                    <div class="accordion" id="accordionExample">
+
+                        {% for faq in faqs %}
+
+                            <div class="accordion-item">
+
+                                <h2 class="accordion-header">
+
+                                    <button
+                                        class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ forloop.counter }}">
+
+                                        {{ faq.question }}
+
+                                    </button>
+
+                                </h2>
+
+                                <div
+                                    id="collapse{{ forloop.counter }}"
+                                    class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                                    data-bs-parent="#accordionExample">
+
+                                    <div class="accordion-body">
+
+                                        {{ faq.answer }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-12 col-xs-12">
+                    <div class="faq_img"><img src="{{ faq_page.image.url }}" alt="faq image"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

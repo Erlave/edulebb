@@ -154,3 +154,32 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.full_name
+    
+
+
+
+class FAQPage(models.Model):
+    image = models.ImageField(upload_to="faq/")
+
+    class Meta:
+        verbose_name = "صفحه سوالات متداول"
+        verbose_name_plural = "صفحه سوالات متداول"
+
+    def __str__(self):
+        return "FAQ Page"
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
+    order = models.PositiveIntegerField(default=1)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "سوال"
+        verbose_name_plural = "سوالات"
+
+    def __str__(self):
+        return self.question

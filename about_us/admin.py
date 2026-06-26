@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AboutPage, AboutFeature ,AboutBenefit, AboutCounter , AboutBanner, Testimonial
+from .models import AboutPage, AboutFeature ,AboutBenefit, AboutCounter , AboutBanner, Testimonial ,FAQPage, FAQ
 
 
 class AboutFeatureInline(admin.TabularInline):
@@ -141,4 +141,43 @@ class AboutBenefitAdmin(admin.ModelAdmin):
 
     search_fields = (
         "title",
+    )
+
+
+
+
+@admin.register(FAQPage)
+class FAQPageAdmin(admin.ModelAdmin):
+
+    list_display = ("id",)
+
+    def has_add_permission(self, request):
+        return not FAQPage.objects.exists()
+
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "question",
+        "order",
+        "is_active",
+    )
+
+    list_editable = (
+        "order",
+        "is_active",
+    )
+
+    search_fields = (
+        "question",
+        "answer",
+    )
+
+    list_filter = (
+        "is_active",
+    )
+
+    ordering = (
+        "order",
     )

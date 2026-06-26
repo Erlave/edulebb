@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import AboutPage,AboutCounter,AboutBanner,Testimonial
+from .models import AboutPage,AboutCounter,AboutBanner,Testimonial,FAQPage, FAQ
 
 # Create your views here.
 
@@ -25,6 +25,21 @@ class AboutView(TemplateView):
         )
 
         context["testimonials"] = Testimonial.objects.filter(
+            is_active=True
+        )
+
+        return context
+    
+class FAQView(TemplateView):
+
+    template_name = "about_us/faq.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["faq_page"] = FAQPage.objects.first()
+
+        context["faqs"] = FAQ.objects.filter(
             is_active=True
         )
 
