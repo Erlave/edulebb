@@ -10,21 +10,31 @@
                 <div class="col-60 d-flex">
                     <nav id="main-menu">
                         <ul>
+                            <li><a href="{% url "home" %}">صفحه اصلی </a></li>
+                            <li><a href="{% url "about" %}">درباره</a></li>
+                            <li><a href="{% url "course_list" %}">دوره</a></li>
                             <li class="menu-item-has-children">
-                                <a href="#">صفحه اصلی</a>
+                                <a href="#">صفحات</a>
                                 <ul>
-                                    <li><a href="{% url "home" %}">صفحه اصلی 01</a></li>
-                                    {% comment %} <li><a href="index2.html">صفحه اصلی 02</a></li> {% endcomment %}
+                                    <li><a href="{% url "Instructor_list" %}">مربی</a></li>
+                                    {% comment %} <li><a href="ins_details.html">مشخصات مربی</a></li> {% endcomment %}
+                                    {% comment %} <li><a href="pricing.html">طرح قیمت گذاری</a></li> {% endcomment %}
+                                    <li><a href="{% url "faq" %}">صفحه فک</a></li>
+                                    {% comment %} <li><a href="404.html">404</a></li> {% endcomment %}
                                 </ul>
                             </li>
+                            <li><a href="{% url "blog_list" %}">وبلاگ</a></li>
+                            <li><a href="{% url "contact" %}">در تماس باشید</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-20 d-none d-xl-block text-end align-self-center">
+                   {% if  user.is_authenticated %} <a href="{% url "logout" %}" class="btn_one" style="background-color: red;"> خروج</a> {% else %} <a href="{% url "login_url" %}" class="header-btn">ورود</a><a href="{% url "login_url" %}" class="btn_one">ثبت نام</a>{% endif %}
+                </div>
+                <ul class="mobile_menu">
+                    <li><a href="{% url "home" %}">صفحه اصلی </a></li>
                             <li><a href="about.html">درباره</a></li>
-                            <li class="menu-item-has-children">
-                                <a href="course.html">دوره</a>
-                                <ul>
-                                    <li><a href="{% url "about" %}">دوره</a></li>
-                                    {% comment %} <li><a href="course_details.html">جزئیات دوره</a></li> {% endcomment %}
-                                </ul>
-                            </li>
+                            <li><a href="{% url "about" %}">دوره</a></li>
                             <li class="menu-item-has-children">
                                 <a href="#">صفحات</a>
                                 <ul>
@@ -35,54 +45,8 @@
                                     <li><a href="404.html">404</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="blog.html">وبلاگ</a>
-                                <ul>
-                                    <li><a href="blog.html">وبلاگ</a></li>
-                                    <li><a href="blog_single.html">جزئیات وبلاگ</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{% url "blog_list" %}">وبلاگ</a></li>
                             <li><a href="{% url "contact" %}">در تماس باشید</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-20 d-none d-xl-block text-end align-self-center">
-                   {% if  user.is_authenticated %} <a href="{% url "logout" %}" class="btn_one" style="background-color: red;"> خروج</a> {% else %} <a href="{% url "login_url" %}" class="header-btn">ورود</a><a href="{% url "login_url" %}" class="btn_one">ثبت نام</a>{% endif %}
-                </div>
-                <ul class="mobile_menu">
-                    <li>
-                        <a href="#">صفحه اصلی</a>
-                        <ul class="sub-menu">
-                            <li><a href="{% url "home" %}">صفحه اصلی 01</a></li>
-                            {% comment %} <li><a href="index2.html">صفحه اصلی 02</a></li> {% endcomment %}
-                        </ul>
-                    </li>
-                    <li><a href="{% url "about" %}">درباره</a></li>
-                    <li>
-                        <a href="#">دوره</a>
-                        <ul class="sub-menu">
-                            <li><a href="course.html">دوره</a></li>
-                            {% comment %} <li><a href="course_details.html">جزئیات دوره</a></li> {% endcomment %}
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">صفحات</a>
-                        <ul class="sub-menu">
-                            <li><a href="{% url "Instructor_list" %}">مربی</a></li>
-                            {% comment %} <li><a href="ins_details.html">مشخصات مربی</a></li> {% endcomment %}
-                            <li><a href="pricing.html">طرح قیمت گذاری</a></li>
-                            <li><a href="faq.html">صفحه فک</a></li>
-                            <li><a href="404.html">404</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blog.html">وبلاگ</a>
-                        <ul class="sub-menu">
-                            <li><a href="blog.html">وبلاگ</a></li>
-                            <li><a href="blog_single.html">جزئیات وبلاگ</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url "contact" %}">در تماس باشید</a></li>
                 </ul>
             </div>
         </div>

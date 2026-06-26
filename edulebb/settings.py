@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'contact_us',
     'instructor_module',
     'about_us',
+    'blog',
+
 
 
 

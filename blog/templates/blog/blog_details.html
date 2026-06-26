@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+{% load poll_extras %}
+
+
+
+{% block content %}
+
+
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>وبلاگ تک</h1>
+                    <ul>
+                        <li><a href="{% url "home" %}">صفحه اصلی</a></li>
+                        <li>/ جزئیات وبلاگ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="blog-page section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-sm-12 col-xs-12">
+                    <div class="arti_single">
+                        <div class="arti_img_two"><img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }} ">
+                        </div>
+                        
+                        <div class="arti_sp">
+                            <h2>{{ blog.title }}</h2>
+                            {% comment %} <img src="assets/img/blog/1.png" class="img-fluid" alt="وبلاگ image"> {% endcomment %}
+                            <p>{{ blog.content|safe }}</p>
+                        </div>
+                        <div class="share_sp">
+                            <h4>دنبال کنید </h4>
+                            <ul>
+                                <li><a href="{{ blog.author.facebook }}"><span class="ti-facebook"></span>فیس بوک</a></li>
+                                <li><a href="{{ blog.author.twitter }}"><span class="ti-twitter"></span>توییتر</a></li>
+                                <li><a href="{{ blog.author.instagram }}"><span class="ti-instagram"></span>اینستاگرام</a></li>
+                                <li><a href="{{ blog.author.linkedin }}"><span class="ti-linkedin"></span>لینکدین</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="author_part">
+                        <h3 class="blog_head_title">درباره نویسنده</h3>
+                        <div class="single_author">
+                            <img src="{{ blog.author.image.url }}" alt="">
+                            <h4> {{ blog.author.full_name }}</h4>
+                            <p>{{ blog.author.bio }}</p>
+                        </div>
+                    </div>
+                    <div class="comments_part">
+                        <h3 class="blog_head_title">نظرات</h3>
+                        {% for   comment in comments  %}
+                        <div class="single_comment">
+                            {% comment %} <img src="assets/img/blog/c1.jpg" alt=""> {% endcomment %}
+                            <h4> {{ comment.name }}</h4>
+                            <p> {{ comment.message }}</p>
+                        </div>
+                        {% empty %}
+
+                            <p>
+
+                            هنوز نظری ثبت نشده است.
+
+                            </p>
+                        {% endfor %}
+                        
+                    </div>
+                    <div class="comment_form">
+                        <h3 class="blog_head_title">یک نظر اضافه کنید</h3>
+                        <div class="contact comment-box">
+                            <form method="post">
+
+                            {% csrf_token %}
+
+                            {{ form.name }}
+
+                            {{ form.email }}
+
+                            {{ form.subject }}
+
+                            {{ form.message }}
+
+                            <button type="submit">
+
+                            ارسال نظر
+
+                            </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-12 col-xs-12">
+                    
+                    
+                    <div class="sidebar-post">
+                        <div class="sidebar_title">
+                            <h4>پست محبوب</h4>
+                        </div>
+                        {% for  post in popular_posts  %}
+                        <div class="single_popular">
+                            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt=""></a>
+                            <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                        </div>
+                        {% empty %}
+                        <p>
+
+                            هنوز پست ثبت نشده است.
+
+                        </p>
+                        {% endfor %}
+                        
+                    </div>
+
+
+                    <div class="sidebar-post">
+                        <div class="sidebar_title">
+                            <h4>دسته بندی ها</h4>
+                        </div>
+                        <div class="single_category">
+                            <ul>
+                                {% for  category in categories  %}
+                                <li><a href="#">{{ category.title }}</a></li>
+                                {% endfor %}
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock content %}
+
+
+

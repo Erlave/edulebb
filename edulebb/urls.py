@@ -27,6 +27,8 @@ urlpatterns = [
     path('contact_us/' ,include('contact_us.url') ),
     path('Instructor/' ,include('instructor_module.url') ),
     path('about/' ,include('about_us.url') ),
+    path('blog/' ,include('blog.url') ),
+
 
 
 
