@@ -12,7 +12,7 @@ env/
 .env
 
 # Django
-db.sqlite3
+
 yoozify-db.sqlite3
 
 media/
